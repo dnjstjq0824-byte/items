@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BN GAMEEX Outbox Event Schema Registry",
+  "description": "Transactional outbox event definitions for asynchronous messaging, reconciliation, and audit streams",
+  "definitions": {
+    "OrderCreatedEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string", "format": "uuid" },
+        "event_type": { "type": "string", "enum": ["order.created"] },
+        "aggregate_id": { "type": "string", "format": "uuid" },
+        "order_number": { "type": "string" },
+        "buyer_id": { "type": "string", "format": "uuid" },
+        "seller_id": { "type": "string", "format": "uuid" },
+        "total_minor": { "type": "integer" },
+        "currency": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PaymentCapturedEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string", "format": "uuid" },
+        "event_type": { "type": "string", "enum": ["payment.captured"] },
+        "aggregate_id": { "type": "string", "format": "uuid" },
+        "provider_id": { "type": "string" },
+        "provider_payment_ref": { "type": "string" },
+        "amount_minor": { "type": "integer" },
+        "captured_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "DeliveryClaimedEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string", "format": "uuid" },
+        "event_type": { "type": "string", "enum": ["delivery.claimed"] },
+        "order_id": { "type": "string", "format": "uuid" },
+        "evidence_count": { "type": "integer" },
+        "claimed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "DisputeOpenedEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": { "type": "string", "format": "uuid" },
+        "event_type": { "type": "string", "enum": ["dispute.opened"] },
+        "dispute_id": { "type": "string", "format": "uuid" },
+        "order_id": { "type": "string", "format": "uuid" },
+        "reason_code": { "type": "string" },
+        "opened_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

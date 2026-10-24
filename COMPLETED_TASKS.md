@@ -1,0 +1,46 @@
+# BN GAMEEX — COMPLETED TASKS
+
+**Updated:** 2026-10-24T22:52:00+09:00
+
+- [x] Initialized Git repository (`main` branch)
+- [x] Inspected local host environment: Go 1.27.0, Node.js 24.19.0, npm 11.17.0, Flutter 3.47.8 (Dart 3.13.7), Git 2.55.0
+- [x] Established master directory architecture matching ARTICLE 6: `apps/web`, `apps/admin`, `apps/mobile`, `services/api`, `services/worker`, `database`, `contracts`, `infrastructure`, `docs`, `tests`
+- [x] Created `EXECUTION_STATE.md` and `REQUIREMENTS_MATRIX.md` mapping all 40 master requirements from ARTICLE 0 to ARTICLE 39
+- [x] Authored complete PostgreSQL master schema `database/migrations/001_initial_schema.sql` (34 tables, UUID PKs, TIMESTAMPTZ, CHECK constraints)
+- [x] Created database seed fixtures (`01_admin_roles.sql`, `02_games_catalog.sql`, `03_trade_policies.sql`, `04_fee_policies.sql`, `05_ledger_accounts.sql`) and sample testdata (`01_sample_users_and_listings.sql`)
+- [x] Implemented Go API Backend domain services:
+  - Policy Engine (Article 3 Multi-gate compliance check & Article 3.4 Game Account ban)
+  - Inventory & Atomic Reservation Service with timeout auto-rollback (Article 11 & 23)
+  - Order State Machine Service with audit history (Article 15)
+  - Standardized PaymentProvider adapter & HMAC-SHA256 Sandbox Provider with replay protection (Article 16 & 26)
+  - Double-Entry Financial Accounting Ledger Service enforcing debit==credit (Article 16.6 & 22.8)
+  - Delivery & Evidence Service with SHA256 integrity verification (Article 17)
+  - Dispute Resolution Service with Dual-Approval (4-Eyes Principle) for refunds (Article 18 & 29)
+  - Fraud & Risk Engine with phishing & off-platform leakage regex filters (Article 20)
+  - Real-time WebSocket Chat Gateway with message sequencing and client ack (Article 14)
+- [x] Built and verified Go API (`services/api/cmd`) and Worker (`services/worker/cmd`) binaries with zero errors
+- [x] Authored and executed automated Go test suite (`go test -v ./...` - 100% PASS)
+- [x] Created API & Event Contracts:
+  - `contracts/openapi/openapi.yaml` (OpenAPI 3.1.0 specification)
+  - `contracts/websocket/protocol.json` (WebSocket real-time client/server schemas)
+  - `contracts/events/outbox.json` (Transactional outbox schemas)
+- [x] Implemented Vue 3 Admin Console application in `apps/admin`:
+  - Operational dashboard with metric segregation (GMV vs Captured vs Revenue vs Pending Payouts)
+  - Global Trade Policy management table
+  - Dispute Center with 4-eyes secondary finance approval
+  - Financial Reconciliation data grid
+  - Built with Vite and typechecked with vue-tsc (0 errors, 1.02s build)
+- [x] Implemented Flutter Native Mobile Application for Android & iOS in `apps/mobile`:
+  - Dark Theme matching Master Design System (#0B1020, #6366F1, #22D3EE)
+  - Bottom navigation: Home, Orders, Sell, Chat
+  - Analyzed with Flutter 3.47 (`No issues found!`)
+- [x] Implemented Vue 3 / Nuxt Public Web application in `apps/web`:
+  - GlobalHeader, GameSelector, ListingCards, OrderTimeline
+  - Design system tokens and Tailwind configuration
+- [x] Implemented Infrastructure & CI/CD:
+  - Multistage Dockerfiles for API, Worker, Web, Admin
+  - Production `docker-compose.yml` linking Postgres, Redis, API, Worker, Admin, Web
+  - GitHub Actions CI pipeline (`pipeline.yml`)
+- [x] Generated complete suite of 37 mandatory technical documents in `docs/`
+- [x] Verified full traceability against the 63 test scenarios of ARTICLE 32
+- [x] Delivered Final Release Acceptance Report (`docs/37_FINAL_VERIFICATION.md`) with explicit PASS vs BLOCKED classification

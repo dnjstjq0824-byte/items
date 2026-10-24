@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+.dart_tool/
+.packages
+
+# Build artifacts
+dist/
+.output/
+.nuxt/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+coverage.out
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

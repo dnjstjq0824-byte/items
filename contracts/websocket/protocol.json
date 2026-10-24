@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BN GAMEEX Real-Time Chat WebSocket Protocol",
+  "description": "Defines client/server message schemas per Article 14 of Master PO Order BN-GAMEEX-MASTER-001",
+  "events": {
+    "client_events": [
+      {
+        "type": "chat.message.send",
+        "description": "Sent by client to transmit message in a conversation",
+        "properties": {
+          "type": { "type": "string", "enum": ["chat.message.send"] },
+          "conversation_id": { "type": "string", "format": "uuid" },
+          "client_message_id": { "type": "string", "format": "uuid" },
+          "payload": {
+            "type": "object",
+            "required": ["type", "body"],
+            "properties": {
+              "type": { "type": "string", "enum": ["TEXT", "IMAGE", "ORDER_CARD", "OFFER_CARD"] },
+              "body": { "type": "string" },
+              "offer_amount_minor": { "type": "integer" }
+            }
+          }
+        }
+      },
+      {
+        "type": "chat.message.read",
+        "description": "Sent by client to acknowledge message read receipt",
+        "properties": {
+          "type": { "type": "string", "enum": ["chat.message.read"] },
+          "conversation_id": { "type": "string", "format": "uuid" },
+          "last_read_sequence": { "type": "integer" }
+        }
+      }
+    ],
+    "server_events": [
+      {
+        "type": "chat.message.ack",
+        "description": "Sent by server acknowledging message receipt & db persistence",
+        "properties": {
+          "type": { "type": "string", "enum": ["chat.message.ack"] },
+          "client_message_id": { "type": "string", "format": "uuid" },
+          "server_message_id": { "type": "string", "format": "uuid" },
+          "sequence_no": { "type": "integer" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      {
+        "type": "chat.message.received",
+        "description": "Broadcast by server to peer recipients in the conversation",
+        "properties": {
+          "type": { "type": "string", "enum": ["chat.message.received"] },
+          "conversation_id": { "type": "string", "format": "uuid" },
+          "message": { "type": "object" }
+        }
+      },
+      {
+        "type": "chat.system.warning",
+        "description": "Sent to user if risk engine detects phishing or off-platform leaks",
+        "properties": {
+          "type": { "type": "string", "enum": ["chat.system.warning"] },
+          "reason": { "type": "string" },
+          "action": { "type": "string", "enum": ["WARNING", "BLOCK"] }
+        }
+      }
+    ]
+  }
+}

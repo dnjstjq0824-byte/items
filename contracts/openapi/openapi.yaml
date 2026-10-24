@@ -1,0 +1,320 @@
+openapi: 3.1.0
+info:
+  title: BN GAMEEX Master REST API
+  description: >
+    Official API specification for BN GAMEEX Global Game Asset Trading Marketplace.
+    Complies with Master PO Order BN-GAMEEX-MASTER-001.
+  version: 1.0.0
+  contact:
+    name: Booking Network Co., Ltd Product Team
+servers:
+  - url: https://api.bookingnetwork.example/api/v1
+    description: Production Cluster
+  - url: http://localhost:8080/api/v1
+    description: Local Sandbox Environment
+
+paths:
+  /games:
+    get:
+      summary: List supported games in catalog
+      operationId: listGames
+      responses:
+        '200':
+          description: Successful catalog response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Game'
+
+  /games/{id}:
+    get:
+      summary: Retrieve game details
+      operationId: getGame
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Game retrieved
+        '404':
+          description: Game not found
+
+  /games/{id}/trade-availability:
+    get:
+      summary: Evaluate multi-gate policy check for trade eligibility
+      operationId: checkTradeAvailability
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: country
+          in: query
+          required: true
+          schema:
+            type: string
+            example: KR
+        - name: product_type
+          in: query
+          required: true
+          schema:
+            type: string
+            example: GAME_ITEM
+      responses:
+        '200':
+          description: Policy evaluation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradeAvailabilityResponse'
+
+  /listings/search:
+    get:
+      summary: Search and compare listings with normalized unit price
+      operationId: searchListings
+      parameters:
+        - name: game_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: product_type
+          in: query
+          schema:
+            type: string
+        - name: country
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [price_asc, price_desc, recent, fast_delivery, seller_rating]
+      responses:
+        '200':
+          description: Matched listings
+
+  /orders/quotes:
+    post:
+      summary: Create immutable pricing quote with full fee breakdown
+      operationId: createOrderQuote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [buyer_user_id, listing_id, quantity, buyer_country]
+              properties:
+                buyer_user_id:
+                  type: string
+                  format: uuid
+                listing_id:
+                  type: string
+                  format: uuid
+                quantity:
+                  type: integer
+                  minimum: 1
+                buyer_country:
+                  type: string
+                  example: KR
+      responses:
+        '200':
+          description: Quote created
+
+  /orders:
+    post:
+      summary: Place order and atomically reserve stock
+      operationId: placeOrder
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [quote_id]
+              properties:
+                quote_id:
+                  type: string
+                  format: uuid
+                delivery_note:
+                  type: string
+      responses:
+        '201':
+          description: Order placed in AWAITING_PAYMENT status
+
+  /orders/{id}/checkout:
+    post:
+      summary: Initiate external PSP checkout session
+      operationId: createCheckout
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Checkout created with provider URL
+
+  /orders/{id}/delivery:
+    post:
+      summary: Seller submits fulfillment claim with evidence
+      operationId: claimDelivery
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [seller_id, method, evidence_list]
+              properties:
+                seller_id:
+                  type: string
+                  format: uuid
+                method:
+                  type: string
+                evidence_list:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EvidenceItem'
+      responses:
+        '200':
+          description: Delivery claimed
+
+  /orders/{id}/buyer-confirm:
+    post:
+      summary: Buyer confirms receipt and releases order to completion
+      operationId: buyerConfirmDelivery
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Delivery confirmed
+
+  /orders/{id}/disputes:
+    post:
+      summary: Open dispute on order
+      operationId: openDispute
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, reason_code, description]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                reason_code:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Dispute opened
+
+  /integrations/payments/{provider}/webhooks:
+    post:
+      summary: Secure inbound webhook handler for PSP payment events
+      operationId: handlePaymentWebhook
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Signature
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webhook verified and processed
+
+components:
+  schemas:
+    Game:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        slug:
+          type: string
+        name:
+          type: string
+        publisher_name:
+          type: string
+        status:
+          type: string
+
+    TradeAvailabilityResponse:
+      type: object
+      properties:
+        game_id:
+          type: string
+          format: uuid
+        country_code:
+          type: string
+        product_type:
+          type: string
+        trade_status:
+          type: string
+          enum: [APPROVED, BLOCKED, REVIEW_REQUIRED]
+        permitted:
+          type: boolean
+
+    EvidenceItem:
+      type: object
+      required: [media_asset_id, evidence_type, checksum]
+      properties:
+        media_asset_id:
+          type: string
+          format: uuid
+        evidence_type:
+          type: string
+        description:
+          type: string
+        checksum:
+          type: string
