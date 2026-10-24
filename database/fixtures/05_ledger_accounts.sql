@@ -20,3 +20,4 @@ INSERT INTO payment_providers (id, code, name, status, supported_countries, conf
 ('stripe_sandbox', 'STRIPE_SANDBOX', 'Stripe Connect (Sandbox Test Mode)', 'SANDBOX_ONLY', '["US", "KR", "JP", "EU", "GB"]'::jsonb, 'cfg_stripe_sandbox_v1'),
 ('adyen_sandbox', 'ADYEN_SANDBOX', 'Adyen MarketPay (Sandbox Test Mode)', 'SANDBOX_ONLY', '["US", "KR", "JP", "EU", "GB"]'::jsonb, 'cfg_adyen_sandbox_v1')
 ON CONFLICT (id) DO NOTHING;
+

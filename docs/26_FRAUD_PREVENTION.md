@@ -16,3 +16,4 @@ The Go Risk Engine (`services/api/internal/risk/engine.go`) enforces real-time i
    - Flags repetitive rapid checkout attempts with card decline errors.
 3. **Evidence Reuse Detection:**
    - Rejects duplicate SHA256 checksums across different orders to prevent recycled fake delivery screenshots.
+

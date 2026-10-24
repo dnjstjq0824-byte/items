@@ -138,3 +138,4 @@ func (s *Service) ApproveDisputeDecision(ctx context.Context, decisionID, approv
 
 	return nil
 }
+

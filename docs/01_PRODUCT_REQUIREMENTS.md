@@ -36,3 +36,4 @@ BN GAMEEX is a global peer-to-peer (P2P) gaming digital asset trading platform e
 - **Payment & Settlement Integration:** Standardized PaymentProvider & PayoutProvider adapter architectures.
 - **Internal Double-Entry Ledger:** Audit trail reconciling debits and credits against external PSP settlement batches.
 - **Delivery & Dispute Resolution:** Evidence-backed delivery confirmation with dual-approval (4-eyes) refund mechanics.
+

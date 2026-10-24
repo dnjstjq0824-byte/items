@@ -86,3 +86,4 @@ jobs:
           grep -q "CHECK (available_quantity >= 0)" database/migrations/001_initial_schema.sql
           grep -q "uq_game_trade_policy" database/migrations/001_initial_schema.sql
           echo "Schema invariants verified."
+

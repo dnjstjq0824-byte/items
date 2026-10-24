@@ -17,3 +17,4 @@
 - **Content Security Policy (CSP):** Disallows inline eval scripts and restricts connect-src to known API and WebSocket origins.
 - **SQL Injection Defense:** All queries parameterized through Go database/sql drivers and PostgreSQL prepared statements.
 - **Rate Limiting:** IP and user-based token bucket rate limiting on authentication and search endpoints.
+

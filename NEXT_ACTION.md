@@ -6,3 +6,4 @@
 3. Build the Go API Backend domain services, policy engine, payment adapter, double-entry ledger, order state machine, and WebSocket gateway.
 4. Generate the OpenAPI 3.1 contract and WebSocket protocol specification.
 5. Create the 37 mandatory product & architecture documents in `docs/`.
+

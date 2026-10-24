@@ -59,3 +59,4 @@ func TestPolicyEngine_EnforcesComplianceGate(t *testing.T) {
 		t.Fatalf("expected unconfigured policy to be blocked")
 	}
 }
+

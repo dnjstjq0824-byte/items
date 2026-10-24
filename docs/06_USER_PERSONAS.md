@@ -17,3 +17,4 @@
 | **DISPUTE_MANAGER**| Adjudicate buyer/seller evidence, propose case resolutions | Enterprise SSO + MFA | Primary decision only; refund requires 4-eyes approval |
 | **FINANCE_APPROVER**| Secondary dual-authorization on refunds & payout batches | Enterprise SSO + Hardware Key | Must not be the original decision maker |
 | **SUPER_ADMIN** | Overall system policy configuration, game enablement, role assignment | Enterprise SSO + Hardware Key | Full administrative oversight |
+

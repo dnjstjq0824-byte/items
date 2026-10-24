@@ -57,3 +57,4 @@ func TestLedgerService_DoubleEntryBalanceInvariants(t *testing.T) {
 		t.Fatalf("expected unbalanced ledger entry to fail, but it posted")
 	}
 }
+

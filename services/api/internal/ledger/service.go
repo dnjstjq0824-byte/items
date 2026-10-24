@@ -135,3 +135,4 @@ func (s *Service) GetTransaction(id uuid.UUID) (*domain.LedgerTransaction, error
 	}
 	return tx, nil
 }
+

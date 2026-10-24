@@ -25,3 +25,4 @@ type PaymentProvider interface {
 2. **Replay Protection:** Deduplicates incoming `provider_event_id` against the `payment_events` table before processing.
 3. **Amount Matching:** Verifies captured amount and currency match the order record exactly.
 4. **Asynchronous Outbox:** Updates order state in database and emits transactional outbox event for fulfillment dispatch.
+

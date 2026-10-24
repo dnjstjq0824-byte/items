@@ -14,3 +14,4 @@ $$\text{AvailableQuantity} \ge 0, \quad \text{ReservedQuantity} \ge 0$$
 1. **Reserve:** When a buyer initiates an order from a quote, `available_quantity` is decremented by $Q$ and `reserved_quantity` is incremented by $Q$. An `inventory_reservations` record is issued with a 30-minute TTL.
 2. **Commit:** Upon receiving confirmed payment capture from the PSP, `reserved_quantity` is decremented and `sold_quantity` is incremented.
 3. **Rollback / Timeout:** If payment fails, the order expires, or checkout is cancelled, the reservation is released: `reserved_quantity` is decremented and `available_quantity` is restored.
+

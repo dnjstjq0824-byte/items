@@ -12,3 +12,4 @@
 ## 2. Emergency Kill-Switches
 1. **Halt Order Checkout:** Set `feature_flags.key = 'checkout_enabled'` to `FALSE`. Prevents new payments while existing fulfillment proceeds safely.
 2. **Freeze Payout Batches:** Set `feature_flags.key = 'payouts_enabled'` to `FALSE`. Immediately locks automated transfer dispatch during reconciliation investigations.
+

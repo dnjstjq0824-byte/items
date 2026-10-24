@@ -30,3 +30,4 @@ INSERT INTO admin_permissions (id, code, resource, action) VALUES
 ('b0000000-0000-0000-0000-000000000011', 'reconciliation:run', 'reconciliation', 'run'),
 ('b0000000-0000-0000-0000-000000000012', 'audit:view', 'audit', 'read')
 ON CONFLICT (code) DO NOTHING;
+

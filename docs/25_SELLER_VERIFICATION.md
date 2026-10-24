@@ -17,3 +17,4 @@
 Seller reputation scores are derived algorithmically:
 $$\text{TrustScore} = \left(\frac{\text{RatingScoreSum}}{\text{RatingCount}}\right) \times \left(1 - \frac{\text{DisputeCount}}{\text{CompletedOrdersCount} + 1}\right)$$
 Sellers with elevated dispute rates (>3%) are automatically subjected to algorithmic sales velocity limits.
+

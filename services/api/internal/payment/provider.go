@@ -166,3 +166,4 @@ func (p *SandboxPaymentProvider) RefundPayment(ctx context.Context, intent *doma
 		CompletedAt:             time.Now(),
 	}, nil
 }
+

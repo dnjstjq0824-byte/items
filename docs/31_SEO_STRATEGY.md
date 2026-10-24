@@ -10,3 +10,4 @@
 - Canonical URL generation with hreflang tags: `<link rel="alternate" hreflang="ko" href="https://gameex.bookingnetwork.example/ko/games/..." />`
 - Schema.org structured data markup for `Product`, `AggregateRating`, and `BreadcrumbList`.
 - Automatic XML sitemap generation partitioned by locale.
+

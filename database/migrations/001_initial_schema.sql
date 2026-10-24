@@ -928,3 +928,4 @@ CREATE TABLE outbox_events (
 );
 
 CREATE INDEX idx_outbox_events_status ON outbox_events(status, created_at);
+

@@ -22,3 +22,4 @@ Per ARTICLE 0, 3, 16.1, and 37 of the Master PO Order:
 - Local Node.js: `v24.19.0` with `npm 11.17.0` (Ready)
 - Local Flutter: `3.47.8` / `Dart 3.13.7` (Ready)
 - Database: Target PostgreSQL 16+. For automated local testing, Go unit tests utilize an in-memory SQL SQLite compatibility harness / driver or mock store while production SQL migrations are 100% standard PostgreSQL 16+ DDL with full UUID, TIMESTAMPTZ, and CHECK constraints.
+

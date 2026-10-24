@@ -33,3 +33,4 @@ sequenceDiagram
         GW-->>ClientA: chat.system.warning {action: "BLOCK", reason: "Phishing/off-platform forbidden"}
     end
 ```
+

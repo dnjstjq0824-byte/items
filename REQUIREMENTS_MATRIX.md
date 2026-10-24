@@ -45,3 +45,4 @@
 | BN-REQ-038 | Art 36 | 37 Mandatory Technical Documents | All documentation generated with complete traceability | IN PROGRESS |
 | BN-REQ-039 | Art 37 | Release Acceptance Matrix | Real validation: Approved Live vs Blocked Sandbox distinction | IN PROGRESS |
 | BN-REQ-040 | Art 39 | 24 Absolute Prohibitions | Complete guardrails enforced in code, database, and operational architecture | ENFORCED |
+

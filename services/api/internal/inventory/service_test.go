@@ -71,3 +71,4 @@ func TestInventoryService_AtomicReservationAndInvariants(t *testing.T) {
 		t.Fatalf("expected rolled back stock available=7, reserved=0; got available=%d, reserved=%d", l.AvailableQuantity, l.ReservedQuantity)
 	}
 }
+

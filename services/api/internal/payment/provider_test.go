@@ -52,3 +52,4 @@ func TestPaymentProvider_HMACVerificationAndIdempotency(t *testing.T) {
 		t.Fatalf("expected replay event to be rejected with ErrIdempotencyConflict, got: %v", err)
 	}
 }
+

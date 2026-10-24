@@ -37,3 +37,4 @@ flowchart TD
 | **Payment Sandbox** | Fully implemented with HMAC signature verification | **ACTIVE (Sandbox)** | Operates in dev/staging |
 | **Live Payment Capture** | Provider adapter ready for live keys | **BLOCKED (Awaiting Contract)** | Requires countersigned PSP agreement |
 | **Seller Payouts** | Adapter ready for bulk transfer API | **BLOCKED (Awaiting Contract)** | Requires payout service onboarding |
+

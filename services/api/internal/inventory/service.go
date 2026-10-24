@@ -170,3 +170,4 @@ func (s *Service) ExpireStaleReservations(ctx context.Context) int {
 
 	return expiredCount
 }
+

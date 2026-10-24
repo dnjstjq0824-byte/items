@@ -31,3 +31,4 @@
 - Font Family: System native sans-serif (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto)
 - Viewport Breakpoints: 320px (Mobile S), 390px (Mobile Standard), 768px (Tablet), 1024px (Laptop), 1440px (Desktop), 2560px (Ultra-wide).
 - Grid layout: 12-column adaptive layout on desktop, single-column stacked on mobile.
+

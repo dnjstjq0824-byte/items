@@ -11,3 +11,4 @@
 - [ ] **Gate 2: Live Payout Bank Agreement:** Live bulk disbursement provider credentials once corporate KYB onboarding completes.
 - [ ] **Gate 3: Jurisdictional Game Currency Legal Opinion:** Retained counsel review before changing `game_trade_policies.trade_enabled` from `FALSE` to `TRUE` for Korean in-game currencies.
 - [ ] **Gate 4: Final Product Owner Commercial Signoff:** Explicit PO authorization to transition deployment from Pre-Release Staging to Live Production.
+

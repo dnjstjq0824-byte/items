@@ -147,3 +147,4 @@ func (s *Service) GetDelivery(orderID uuid.UUID) (*domain.Delivery, []domain.Del
 	evs := s.evidences[d.ID]
 	return d, evs, nil
 }
+

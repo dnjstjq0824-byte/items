@@ -20,3 +20,4 @@ Database migrations are strictly sequential and version-controlled under `databa
 ## 2. Rollback & Disaster Recovery
 - All migrations are idempotent using `IF NOT EXISTS` and `ON CONFLICT DO NOTHING`.
 - Point-in-time recovery (PITR) enabled via continuous WAL archiving on production clusters.
+

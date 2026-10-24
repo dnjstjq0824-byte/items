@@ -23,3 +23,4 @@ flowchart LR
 ## 2. Anti-Tampering Rules
 - Internal ledger transactions are append-only.
 - Discrepancies cannot be automatically closed without a formal review note and secondary management signoff.
+

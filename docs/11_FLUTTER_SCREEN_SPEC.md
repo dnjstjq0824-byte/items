@@ -17,3 +17,4 @@
 
 ## 2. In-App Payment Guardrail
 Per Article 30, the mobile application does not expose unapproved external payment links. Checkout actions link exclusively to pre-approved licensed PSP webviews with strict policy checks in place.
+

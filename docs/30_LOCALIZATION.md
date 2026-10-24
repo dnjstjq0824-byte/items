@@ -13,3 +13,4 @@
 All pricing calculations in the Go backend utilize integer minor units to eliminate floating-point precision errors:
 $$\text{DisplayAmount} = \frac{\text{AmountMinor}}{10^{\text{DecimalDigits}}}$$
 All internal balance validations strictly enforce minor-unit integer equality.
+

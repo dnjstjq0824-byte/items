@@ -21,3 +21,4 @@ The canonical OpenAPI 3.1.0 contract is defined in [contracts/openapi/openapi.ya
 - `POST /api/v1/orders/{id}/disputes`: Formal dispute initialization.
 - `GET /api/v1/admin/dashboard`: Segregated operational metrics.
 - `POST /api/v1/admin/disputes/decisions/{id}/approve`: 4-Eyes secondary approval for refund execution.
+

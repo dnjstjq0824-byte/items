@@ -23,3 +23,4 @@ Sellers cannot withdraw directly from internal database balances. A payout reque
 2. The protection holding window has expired without an active dispute.
 3. The seller's KYB/KYC verification is active.
 4. Total disbursed payouts do not exceed reconciled net seller payables.
+

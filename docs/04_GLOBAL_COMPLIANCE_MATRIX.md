@@ -22,3 +22,4 @@ Trade enablement is evaluated using Boolean logic:
 $$\text{TradeEnabled} = (\text{LegalStatus} == \text{APPROVED}) \land (\text{PublisherStatus} == \text{PERMITTED}) \land (\text{PSPStatus} == \text{APPROVED}) \land (\text{ProductType} \neq \text{GAME\_ACCOUNT})$$
 
 If any term evaluates to false, the listing and checkout pipelines immediately halt with status `BLOCKED` or `REVIEW_REQUIRED`.
+

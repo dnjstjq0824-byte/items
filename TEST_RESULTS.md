@@ -70,3 +70,4 @@ ok  	github.com/bookingnetwork/bn-gameex/services/api/internal/policies	(cached)
 | Realtime Chat (53-57) | 5 | 5 | 0 | 0 |
 | Admin & Audit (58-63) | 6 | 6 | 0 | 0 |
 | **Total** | **63** | **63** | **0** | **0** |
+

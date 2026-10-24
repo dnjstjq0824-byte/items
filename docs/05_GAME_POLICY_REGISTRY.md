@@ -22,3 +22,4 @@ The Go API backend enforces this registry dynamically via `services/api/internal
 - Validates every new Listing creation.
 - Re-evaluates policy when order transitions to Checkout.
 - Automatically rejects any product categorized as `GAME_ACCOUNT` with `ErrAccountTradeProhibited`.
+

@@ -32,3 +32,4 @@ The master database consists of 34 normalized tables across 14 functional domain
   - `CHECK (debit_minor >= 0 AND credit_minor >= 0)`
   - `CHECK (NOT (debit_minor > 0 AND credit_minor > 0))`
   - `CHECK (blocker_user_id <> blocked_user_id)`
+

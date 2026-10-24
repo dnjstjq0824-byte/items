@@ -14,3 +14,4 @@
    - Hashed voucher code record with timestamp and cryptographic signature.
 3. **Privacy Masking:**
    - The UI automatically prompts sellers to blur private user details (email addresses, phone numbers, balance info) before finalizing submission.
+

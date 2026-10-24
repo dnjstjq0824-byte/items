@@ -79,3 +79,4 @@ INSERT INTO game_trade_policies (
     TRUE,
     NOW()
 ) ON CONFLICT (game_id, country_code, product_type) DO NOTHING;
+

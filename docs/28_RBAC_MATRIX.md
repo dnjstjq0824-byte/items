@@ -21,3 +21,4 @@
 | `payout:approve` | Yes | No | No | No | **Yes** | No |
 | `reconciliation:run` | Yes | No | No | **Yes** | **Yes** | No |
 | `audit:view` | Yes | Yes | Yes | Yes | Yes | No |
+
