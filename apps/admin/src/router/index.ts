@@ -3,12 +3,22 @@ import Dashboard from '../pages/Dashboard.vue'
 import Policies from '../pages/Policies.vue'
 import Disputes from '../pages/Disputes.vue'
 import Reconciliation from '../pages/Reconciliation.vue'
+import Sellers from '../pages/Sellers.vue'
+import Orders from '../pages/Orders.vue'
+import Payments from '../pages/Payments.vue'
+import RiskCenter from '../pages/RiskCenter.vue'
+import AuditLogs from '../pages/AuditLogs.vue'
 
 const routes = [
   { path: '/', component: Dashboard },
   { path: '/policies', component: Policies },
+  { path: '/orders', component: Orders },
+  { path: '/sellers', component: Sellers },
   { path: '/disputes', component: Disputes },
   { path: '/reconciliation', component: Reconciliation },
+  { path: '/payments', component: Payments },
+  { path: '/risk', component: RiskCenter },
+  { path: '/audit-logs', component: AuditLogs },
 ]
 
 const router = createRouter({
@@ -17,4 +27,3 @@ const router = createRouter({
 })
 
 export default router
-

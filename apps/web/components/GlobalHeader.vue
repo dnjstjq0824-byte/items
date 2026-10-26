@@ -11,11 +11,12 @@
 
       <!-- Navigation Links -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
-        <NuxtLink to="/games" class="hover:text-white transition">Games</NuxtLink>
-        <NuxtLink to="/items" class="hover:text-white transition">Items</NuxtLink>
-        <NuxtLink to="/offers" class="hover:text-white transition">Offers</NuxtLink>
-        <NuxtLink to="/sellers" class="hover:text-white transition">Sellers</NuxtLink>
-        <NuxtLink to="/help" class="hover:text-white transition">Help</NuxtLink>
+        <NuxtLink to="/games" class="hover:text-white transition">Games Catalog</NuxtLink>
+        <NuxtLink to="/my/orders" class="hover:text-white transition">My Orders</NuxtLink>
+        <NuxtLink to="/chat" class="hover:text-white transition">Trade Chat</NuxtLink>
+        <NuxtLink to="/seller/dashboard" class="hover:text-white transition">Seller Hub</NuxtLink>
+        <NuxtLink to="/fees" class="hover:text-white transition">Fees (0% Buyer)</NuxtLink>
+        <NuxtLink to="/help/trade-protection" class="hover:text-white transition">Trade Protection</NuxtLink>
       </nav>
 
       <!-- Search Bar -->

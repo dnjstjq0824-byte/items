@@ -1,6 +1,6 @@
 # BN GAMEEX — COMPLETED TASKS
 
-**Updated:** 2026-10-26T15:04:00+09:00
+**Updated:** 2026-10-26T15:41:00+09:00
 
 - [x] Initialized Git repository (`main` branch)
 - [x] Inspected local host environment: Go 1.27.0, Node.js 24.19.0, npm 11.17.0, Flutter 3.47.8 (Dart 3.13.7), Git 2.55.0
@@ -21,25 +21,49 @@
 - [x] Implemented PostgreSQL database connection pooling (`github.com/lib/pq`) and cold-start migration runner in `services/api/internal/database/db.go`
 - [x] Implemented production health and readiness endpoints (`GET /healthz`, `GET /readyz`, `GET /api/v1/health`)
 - [x] Built and verified Go API (`services/api/cmd`) and Worker (`services/worker/cmd`) binaries with zero errors
-- [x] Authored and executed automated Go test suite (`go test -v ./...` - 100% PASS)
+- [x] Authored and executed comprehensive automated Go test suite covering all 8 core packages (`go test -v ./...` - 100% PASS):
+  - `policies` (Multi-gate compliance, Article 3.4 Account Ban)
+  - `inventory` (Atomic reservation, stock depletion invariant)
+  - `orders` (14-state deterministic transitions, illegal jump prevention)
+  - `payment` (HMAC-SHA256 signature verification, replay protection)
+  - `ledger` (Double-entry balance debit==credit invariant)
+  - `delivery` (Cryptographic SHA-256 evidence validation, buyer confirmation)
+  - `disputes` (4-Eyes dual approval for high-value refunds)
+  - `risk` (Phishing URL block, off-platform leakage warning, unverified high-value review)
 - [x] Created API & Event Contracts:
   - `contracts/openapi/openapi.yaml` (OpenAPI 3.1.0 specification)
   - `contracts/websocket/protocol.json` (WebSocket real-time client/server schemas)
   - `contracts/events/outbox.json` (Transactional outbox schemas)
-- [x] Implemented Vue 3 Admin Console application in `apps/admin`:
-  - Operational dashboard with metric segregation (GMV vs Captured vs Revenue vs Pending Payouts)
-  - Global Trade Policy management table
-  - Dispute Center with 4-eyes secondary finance approval
-  - Financial Reconciliation data grid
-  - Built with Vite and typechecked with vue-tsc (0 errors, 1.02s build)
+- [x] Implemented Vue 3 Admin Console application in `apps/admin` (9 Comprehensive Management Centers):
+  - `Dashboard.vue`: Operational dashboard with metric segregation (GMV vs Captured vs Revenue vs Pending Payouts)
+  - `Policies.vue`: Global Trade Policy gating management table
+  - `Orders.vue`: Master order audit table with 14-state filtering and admin overrides
+  - `Sellers.vue`: Seller verification management (KYC levels, reputation, business entities, suspension/ban)
+  - `Disputes.vue`: Dispute Center with 4-eyes secondary finance approval
+  - `Reconciliation.vue`: Financial Reconciliation double-entry ledger data grid
+  - `Payments.vue`: Payment rails and inbound HMAC-SHA256 webhook audit trail
+  - `RiskCenter.vue`: Anti-fraud and heuristic surveillance center
+  - `AuditLogs.vue`: Append-only immutable administrative audit log viewer
+  - Typechecked and built with Vite (`vue-tsc --noEmit && vite build` - 0 errors, 1.76s build)
 - [x] Implemented Flutter Native Mobile Application for Android & iOS in `apps/mobile`:
   - Dark Theme matching Master Design System (#0B1020, #6366F1, #22D3EE)
   - Bottom navigation: Home, Orders, Sell, Chat
-  - Analyzed with Flutter 3.47 (`No issues found!`)
+  - Interactive "Confirm Receipt" dialog with escrow release disclaimer
+  - Interactive "Open Dispute" dialog with category selector & SLA explanation
+  - Analyzed with Flutter 3.27+ (`No issues found! 0 warnings, 0 errors`)
 - [x] Implemented Vue 3 / Nuxt Public Web application in `apps/web`:
-  - GlobalHeader, GameSelector, ListingCards, OrderTimeline
-  - Design system tokens and Tailwind configuration
-  - Production SSR bundle built with Nitro (`.output/server/index.mjs`)
+  - `pages/index.vue`: Hero banner, Game catalog showcase, Search bar, Trust features
+  - `pages/games/index.vue`: Game catalog browser with search and platform filters
+  - `pages/games/[slug].vue`: Game detail with server filter, product type tabs, and unit-price comparison
+  - `pages/listings/[id].vue`: Listing details, quantity counter, fee itemization, seller trust card, checkout launcher
+  - `pages/my/orders/index.vue`: User orders list with status filter tabs
+  - `pages/my/orders/[id].vue`: Order lifecycle timeline, delivery proof viewer (SHA-256 verification), Confirm Receipt and Open Dispute modals
+  - `pages/seller/dashboard.vue`: Professional Seller Workspace (Active inventory, pending fulfillment SLA indicators, payout requests)
+  - `pages/fees.vue`: Transparent Fee Structure & Interactive Fee Calculator
+  - `pages/help/trade-protection.vue`: Comprehensive Buyer & Seller Protection, Escrow Guarantee, Prohibited Account Trading rules
+  - `pages/chat.vue`: Real-time Trade Chat with heuristic off-platform leakage interception
+  - `components/GlobalHeader.vue`: Complete navigation links
+  - Production SSR bundle built with Nitro (`.output/server/index.mjs`, 2.09 MB)
 - [x] Implemented Infrastructure & Real-Server Deployment:
   - Multistage Dockerfiles for API, Worker, Web, Admin
   - Production `docker-compose.prod.yml` with healthchecks, restart policies, and network isolation
