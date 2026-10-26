@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bn-gameex-api
+  namespace: bn-gameex
+  labels:
+    app: bn-gameex-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bn-gameex-api
+  template:
+    metadata:
+      labels:
+        app: bn-gameex-api
+    spec:
+      containers:
+        - name: api
+          image: bookingnetwork/bn-gameex-api:v1.0.0
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: bn-gameex-config
+            - secretRef:
+                name: bn-gameex-secrets
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bn-gameex-api-service
+  namespace: bn-gameex
+spec:
+  selector:
+    app: bn-gameex-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bn-gameex-ingress
+  namespace: bn-gameex
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  tls:
+    - hosts:
+        - api.bookingnetwork.example
+        - gameex.bookingnetwork.example
+      secretName: bn-gameex-tls-cert
+  rules:
+    - host: api.bookingnetwork.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bn-gameex-api-service
+                port:
+                  number: 80
+

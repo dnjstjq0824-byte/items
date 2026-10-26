@@ -10,6 +10,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/bookingnetwork/bn-gameex/services/api/internal/database"
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/domain"
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/server"
 	"github.com/google/uuid"
@@ -22,6 +23,25 @@ func main() {
 	}
 
 	container := server.NewAPIContainer()
+
+	// Optional PostgreSQL Connection for Real Server Deployments (Article 22 & 23)
+	dbURL := os.Getenv("DATABASE_URL")
+	if dbURL != "" {
+		db, err := database.Connect(dbURL)
+		if err != nil {
+			log.Printf("[DATABASE:WARN] Could not connect to PostgreSQL (%v); falling back to in-memory mode", err)
+		} else {
+			container.DB = db
+			if os.Getenv("AUTO_MIGRATE") == "true" {
+				migPath := os.Getenv("MIGRATION_PATH")
+				if migPath == "" {
+					migPath = "database/migrations/001_initial_schema.sql"
+				}
+				_ = db.RunMigrationFile(context.Background(), migPath)
+			}
+		}
+	}
+
 	seedInitialData(container)
 
 	srv := &http.Server{

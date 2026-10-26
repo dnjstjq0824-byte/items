@@ -1,10 +1,10 @@
 # BN GAMEEX — COMPLETED TASKS
 
-**Updated:** 2026-10-24T22:52:00+09:00
+**Updated:** 2026-10-26T15:04:00+09:00
 
 - [x] Initialized Git repository (`main` branch)
 - [x] Inspected local host environment: Go 1.27.0, Node.js 24.19.0, npm 11.17.0, Flutter 3.47.8 (Dart 3.13.7), Git 2.55.0
-- [x] Established master directory architecture matching ARTICLE 6: `apps/web`, `apps/admin`, `apps/mobile`, `services/api`, `services/worker`, `database`, `contracts`, `infrastructure`, `docs`, `tests`
+- [x] Established master directory architecture matching ARTICLE 6: `apps/web`, `apps/admin`, `apps/mobile`, `services/api`, `services/worker`, `database`, `contracts`, `infrastructure`, `docs`, `tests`, `scripts`
 - [x] Created `EXECUTION_STATE.md` and `REQUIREMENTS_MATRIX.md` mapping all 40 master requirements from ARTICLE 0 to ARTICLE 39
 - [x] Authored complete PostgreSQL master schema `database/migrations/001_initial_schema.sql` (34 tables, UUID PKs, TIMESTAMPTZ, CHECK constraints)
 - [x] Created database seed fixtures (`01_admin_roles.sql`, `02_games_catalog.sql`, `03_trade_policies.sql`, `04_fee_policies.sql`, `05_ledger_accounts.sql`) and sample testdata (`01_sample_users_and_listings.sql`)
@@ -18,6 +18,8 @@
   - Dispute Resolution Service with Dual-Approval (4-Eyes Principle) for refunds (Article 18 & 29)
   - Fraud & Risk Engine with phishing & off-platform leakage regex filters (Article 20)
   - Real-time WebSocket Chat Gateway with message sequencing and client ack (Article 14)
+- [x] Implemented PostgreSQL database connection pooling (`github.com/lib/pq`) and cold-start migration runner in `services/api/internal/database/db.go`
+- [x] Implemented production health and readiness endpoints (`GET /healthz`, `GET /readyz`, `GET /api/v1/health`)
 - [x] Built and verified Go API (`services/api/cmd`) and Worker (`services/worker/cmd`) binaries with zero errors
 - [x] Authored and executed automated Go test suite (`go test -v ./...` - 100% PASS)
 - [x] Created API & Event Contracts:
@@ -37,11 +39,14 @@
 - [x] Implemented Vue 3 / Nuxt Public Web application in `apps/web`:
   - GlobalHeader, GameSelector, ListingCards, OrderTimeline
   - Design system tokens and Tailwind configuration
-- [x] Implemented Infrastructure & CI/CD:
+  - Production SSR bundle built with Nitro (`.output/server/index.mjs`)
+- [x] Implemented Infrastructure & Real-Server Deployment:
   - Multistage Dockerfiles for API, Worker, Web, Admin
-  - Production `docker-compose.yml` linking Postgres, Redis, API, Worker, Admin, Web
-  - GitHub Actions CI pipeline (`pipeline.yml`)
-- [x] Generated complete suite of 37 mandatory technical documents in `docs/`
+  - Production `docker-compose.prod.yml` with healthchecks, restart policies, and network isolation
+  - Production `nginx.conf` reverse proxy routing
+  - Kubernetes enterprise deployment manifests (`infrastructure/deploy/k8s/deployment.yaml`)
+  - Automated deployment scripts: `scripts/deploy.sh`, `scripts/deploy.ps1`, `scripts/migrate.sh`, `scripts/healthcheck.sh`
+  - Production environment configuration template (`.env.example`)
+- [x] Generated complete suite of 38 technical documents in `docs/` (including `38_PRODUCTION_SELF_AUDIT_REPORT.md`)
 - [x] Verified full traceability against the 63 test scenarios of ARTICLE 32
-- [x] Delivered Final Release Acceptance Report (`docs/37_FINAL_VERIFICATION.md`) with explicit PASS vs BLOCKED classification
-
+- [x] Delivered Final Release Acceptance Report (`docs/37_FINAL_VERIFICATION.md`) and Self-Audit Report (`docs/38_PRODUCTION_SELF_AUDIT_REPORT.md`)

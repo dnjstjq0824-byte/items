@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/chat"
+	"github.com/bookingnetwork/bn-gameex/services/api/internal/database"
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/delivery"
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/disputes"
 	"github.com/bookingnetwork/bn-gameex/services/api/internal/domain"
@@ -20,6 +21,7 @@ import (
 )
 
 type APIContainer struct {
+	DB              *database.DB
 	PolicyEngine    *policies.PolicyEngine
 	InvService      *inventory.Service
 	OrderService    *orders.Service
@@ -81,6 +83,33 @@ func (c *APIContainer) registerRoutes() {
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, Idempotency-Key, X-Signature")
 		w.WriteHeader(http.StatusOK)
+	})
+
+	// Health & Readiness Endpoints (Production Standard)
+	c.Mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{"status":"OK","service":"bn-gameex-api"}`))
+	})
+	c.Mux.HandleFunc("GET /readyz", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		if c.DB != nil {
+			if err := c.DB.Ping(r.Context()); err != nil {
+				w.WriteHeader(http.StatusServiceUnavailable)
+				_, _ = w.Write([]byte(`{"status":"UNHEALTHY","error":"database ping failed"}`))
+				return
+			}
+		}
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{"status":"READY","service":"bn-gameex-api"}`))
+	})
+	c.Mux.HandleFunc("GET /api/v1/health", func(w http.ResponseWriter, r *http.Request) {
+		writeJSON(w, http.StatusOK, map[string]any{
+			"status":      "HEALTHY",
+			"environment": "production",
+			"version":     "1.0.0",
+			"timestamp":   time.Now().UTC().Format(time.RFC3339),
+		})
 	})
 
 	// Games
