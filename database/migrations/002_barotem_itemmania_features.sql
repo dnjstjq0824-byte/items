@@ -171,3 +171,4 @@ CREATE TABLE IF NOT EXISTS safety_warranty_claims (
 
 CREATE INDEX idx_safety_claims_order ON safety_warranty_claims(order_id);
 CREATE INDEX idx_safety_claims_status ON safety_warranty_claims(status);
+

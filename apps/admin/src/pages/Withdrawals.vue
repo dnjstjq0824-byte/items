@@ -184,3 +184,4 @@ function batchApproveLowRisk() {
   alert(`FDS 정상 건 총 ${count}건의 실시간 펌뱅킹 이체가 일괄 승인 완료되었습니다.`)
 }
 </script>
+

@@ -254,3 +254,4 @@ function forceCancelOrder(trade: any) {
   alert(`주문 ${trade.orderNumber}이(가) 관리자 권한으로 직권 취소되었습니다. 구매자에게 전액 환불되었습니다.`)
 }
 </script>
+

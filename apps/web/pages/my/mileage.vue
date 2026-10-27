@@ -367,3 +367,4 @@ function executeWithdrawal() {
   alert(`${withdrawForm.value.bank} 계좌로 ${(withdrawForm.value.amount - 1000).toLocaleString()}원이 3분 이내로 이체됩니다!`)
 }
 </script>
+

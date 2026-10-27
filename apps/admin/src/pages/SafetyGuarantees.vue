@@ -160,3 +160,4 @@ function awardCompensation(claim: any) {
   alert(`사고 청구 ${claim.id} 승인 완료!\n피해자(${claim.claimant})에게 피해액의 200%인 ${claim.compensationRequested.toLocaleString()}원 마일리지가 즉시 보상 지급되었습니다.\n가해 판매자 계정은 영구정지 및 보증금이 몰수되었습니다.`)
 }
 </script>
+

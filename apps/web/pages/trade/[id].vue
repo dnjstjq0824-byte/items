@@ -551,3 +551,4 @@ function executeCancel() {
   alert('거래 취소 요청이 접수되었습니다. 상대방 동의 또는 타임아웃 시 전액 자동 환불됩니다.')
 }
 </script>
+
