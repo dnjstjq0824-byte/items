@@ -74,3 +74,31 @@
 - [x] Generated complete suite of 38 technical documents in `docs/` (including `38_PRODUCTION_SELF_AUDIT_REPORT.md`)
 - [x] Verified full traceability against the 63 test scenarios of ARTICLE 32
 - [x] Delivered Final Release Acceptance Report (`docs/37_FINAL_VERIFICATION.md`) and Self-Audit Report (`docs/38_PRODUCTION_SELF_AUDIT_REPORT.md`)
+- [x] Benchmark Analysis of BaroTem & ItemMania P2P Trading Mechanics (`docs/39_BAROTEM_ITEMMANIA_USER_FLOW_ANALYSIS.md`):
+  - 14-step deterministic P2P transaction sequence diagram
+  - Detailed 3-Way actor behavioral matrix (Seller, Buyer, Admin)
+  - Anti-scam handover warnings, SHA-256 evidence enforcement, 200% compensation guarantee architecture
+- [x] Database Schema Expansion (`database/migrations/002_barotem_itemmania_features.sql`):
+  - `trade_articles` (P2P Sell/Buy listings with split-trade, 0504 safety virtual phone, 200% badge)
+  - `user_mileage_wallets` with check constraint balance invariants
+  - `mileage_transactions` immutable ledger for 9 transaction types
+  - `mileage_withdrawal_requests` for 24/7 automated firm-banking payouts & FDS risk scores
+  - `trade_cancellation_requests` mediation registry
+  - `safety_warranty_claims` 200% compensation claim management
+- [x] User Application Expansion (`apps/web`):
+  - `/trade`: Game/Server/Category multi-step selector & Sell/Buy live listings
+  - `/trade/sell`: Sell registration form with 5% fee preview & 200% guarantee badge
+  - `/trade/buy`: Buy registration form
+  - `/trade/[id]`: Trade Progress Hub with 4-stage stepper, anti-impersonation banners, SHA-256 proof viewer, confirm receipt modal, cancellation modal, and real-time chat
+  - `/my/mileage`: Mileage wallet with instant charge and 24/7 bank withdrawal
+  - `components/GlobalHeader.vue`: Integrated top navigation
+- [x] Admin Application Expansion (`apps/admin`):
+  - `TradeMonitor.vue`: Live P2P trade room supervisor with SLA timeout indicators, audit log viewer, force settlement & cancellation
+  - `Withdrawals.vue`: 24/7 mileage bank payout audit center with batch processing and AML risk checks
+  - `SafetyGuarantees.vue`: 200% safety compensation adjudication center with game inquiry verification
+- [x] Cloudflare CI/CD & Auto-Deploy Setup:
+  - Root `wrangler.toml` configured with `ASSETS` binding
+  - Root `worker.js` with SPA fallback routing
+  - Root `package.json` with build and deploy scripts
+  - `.git/hooks/post-commit` script to trigger automatic git push on every commit
+  - 118 pre-rendered static assets synchronized into root `public/` directory (verified via `npx wrangler deploy --dry-run`)

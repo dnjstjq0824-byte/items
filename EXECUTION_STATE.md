@@ -32,20 +32,28 @@
 2. `games/index.vue`: Global Approved Game Catalog
 3. `games/[slug].vue`: Game Server & Item Matrix
 4. `listings/[id].vue`: Asset Details & Escrow Checkout
-5. `my/orders/index.vue`: Order Management by State
-6. `my/orders/[id].vue`: Order Details, Delivery Evidence SHA-256 Viewer, Confirm & Dispute
-7. `seller/dashboard.vue`: Seller Operations Center (Inventory, Handover SLA, Payouts)
-8. `fees.vue`: Transparent Fee Structure & Interactive Fee Calculator
-9. `help/trade-protection.vue`: Buyer & Seller Protection System & Article 3.4 Ban
-10. `chat.vue`: Real-time Trade Chat with Anti-Leak Interception Heuristics
+5. `trade/index.vue`: P2P Sell (팝니다) / Buy (삽니다) Market Hub
+6. `trade/sell.vue`: Sell Listing Registration with Fee Calculator
+7. `trade/buy.vue`: Buy Listing Registration
+8. `trade/[id].vue`: Trade Progress Hub (4-Stage Stepper, Chat, Handshake, SHA-256 Proof)
+9. `my/mileage.vue`: Mileage Wallet & 24/7 Firm Banking Withdrawal
+10. `my/orders/index.vue`: Order Management by State
+11. `my/orders/[id].vue`: Order Details, Delivery Evidence SHA-256 Viewer, Confirm & Dispute
+12. `seller/dashboard.vue`: Seller Operations Center (Inventory, Handover SLA, Payouts)
+13. `fees.vue`: Transparent Fee Structure & Interactive Fee Calculator
+14. `help/trade-protection.vue`: Buyer & Seller Protection System & Article 3.4 Ban
+15. `chat.vue`: Real-time Trade Chat with Anti-Leak Interception Heuristics
 
 ### Admin Console (`apps/admin/src/pages/`):
 1. `Dashboard.vue`: Master Operations Overview
-2. `Policies.vue`: Global Trade Policy Multi-Gate Gating
-3. `Orders.vue`: Master Order Ledger Audit & Force Settlement
-4. `Sellers.vue`: Seller Tier, KYC Verification & Suspension Center
-5. `Disputes.vue`: Dispute Center with 4-Eyes Dual Approval
-6. `Reconciliation.vue`: Double-Entry Ledger Financial Reconciliation
-7. `Payments.vue`: Payment Rails & Inbound Webhooks Audit
-8. `RiskCenter.vue`: Heuristic Threat Surveillance & Leak Blocker
-9. `AuditLogs.vue`: Append-Only Immutable Regulatory Audit Trail
+2. `TradeMonitor.vue`: Live P2P Trade Monitoring & Forced Settlement
+3. `Withdrawals.vue`: 24/7 Mileage Bank Payout Review Center
+4. `SafetyGuarantees.vue`: 200% Safety Compensation Adjudication Center
+5. `Policies.vue`: Global Trade Policy Multi-Gate Gating
+6. `Orders.vue`: Master Order Ledger Audit & Force Settlement
+7. `Sellers.vue`: Seller Tier, KYC Verification & Suspension Center
+8. `Disputes.vue`: Dispute Center with 4-Eyes Dual Approval
+9. `Reconciliation.vue`: Double-Entry Ledger Financial Reconciliation
+10. `Payments.vue`: Payment Rails & Inbound Webhooks Audit
+11. `RiskCenter.vue`: Heuristic Threat Surveillance & Leak Blocker
+12. `AuditLogs.vue`: Append-Only Immutable Regulatory Audit Trail
