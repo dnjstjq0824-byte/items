@@ -98,3 +98,4 @@ cd apps/mobile && flutter analyze
 2. **Zero Custody of Customer Funds:** BN GAMEEX never holds fiat customer balances; delegates directly to licensed external payment rail vaults.
 3. **Double-Entry Financial Accounting:** Every monetary movement requires balanced debit and credit entries.
 4. **4-Eyes Principle:** High-value dispute refunds require secondary authentication by an independent finance approver.
+

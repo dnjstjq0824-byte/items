@@ -11,12 +11,12 @@
 
       <!-- Navigation Links -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
-        <NuxtLink to="/games" class="hover:text-white transition">Games Catalog</NuxtLink>
-        <NuxtLink to="/my/orders" class="hover:text-white transition">My Orders</NuxtLink>
-        <NuxtLink to="/chat" class="hover:text-white transition">Trade Chat</NuxtLink>
-        <NuxtLink to="/seller/dashboard" class="hover:text-white transition">Seller Hub</NuxtLink>
-        <NuxtLink to="/fees" class="hover:text-white transition">Fees (0% Buyer)</NuxtLink>
-        <NuxtLink to="/help/trade-protection" class="hover:text-white transition">Trade Protection</NuxtLink>
+        <NuxtLink to="/trade" class="hover:text-white transition font-bold text-indigo-400">아이템 거래소</NuxtLink>
+        <NuxtLink to="/trade/sell" class="hover:text-white transition">팝니다 등록</NuxtLink>
+        <NuxtLink to="/my/orders" class="hover:text-white transition">내 거래함</NuxtLink>
+        <NuxtLink to="/my/mileage" class="hover:text-white transition">마일리지 지갑</NuxtLink>
+        <NuxtLink to="/chat" class="hover:text-white transition">안전 채팅</NuxtLink>
+        <NuxtLink to="/help/trade-protection" class="hover:text-white transition text-rose-300">200% 안심보상</NuxtLink>
       </nav>
 
       <!-- Search Bar -->
